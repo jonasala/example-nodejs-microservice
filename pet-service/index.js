@@ -1,3 +1,4 @@
+require('dotenv').config();
 const Koa = require('koa');
 const Router = require('@koa/router');
 const BodyParser = require('koa-bodyparser');
@@ -12,4 +13,5 @@ router.use('/species', SpeciesRouter.routes());
 router.use('/pets', PetsRouter.routes());
 
 app.use(router.routes()).use(router.allowedMethods());
-app.listen(3000);
+console.log(`Listening on port ${process.env.HTTP_PORT}`);
+app.listen(process.env.HTTP_PORT);

@@ -1,3 +1,4 @@
+require('dotenv').config();
 const Koa = require('koa');
 const Router = require('@koa/router');
 const BodyParser = require('koa-bodyparser');
@@ -54,4 +55,5 @@ router
   });
 
 app.use(router.routes()).use(router.allowedMethods());
-app.listen(3001);
+console.log(`Listening on port ${process.env.HTTP_PORT}`);
+app.listen(process.env.HTTP_PORT);
